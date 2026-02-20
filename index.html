@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Royal Resin Floors · Jharsuguda</title>
+  <!-- Font Awesome 6 & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #faf7f2;
+      color: #2d2a24;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ---------- ROYAL COLOR PALETTE ---------- */
+    :root {
+      --royal-gold: #c9a05e;
+      --royal-deep: #1e2a36;
+      --royal-cream: #f5efe6;
+      --royal-stone: #5a5243;
+      --accent-marble: #e9ddcf;
+    }
+
+    /* ---------- ANIMATIONS ---------- */
+    @keyframes floatGlow {
+      0% { transform: translateY(0px) scale(1); opacity: 0.9; }
+      50% { transform: translateY(-8px) scale(1.02); opacity: 1; }
+      100% { transform: translateY(0px) scale(1); opacity: 0.9; }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+    @keyframes fadeSlideUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes gentlePulse {
+      0% { box-shadow: 0 0 0 0 rgba(201, 160, 94, 0.4); }
+      70% { box-shadow: 0 0 0 12px rgba(201, 160, 94, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(201, 160, 94, 0); }
+    }
+    .animate-float { animation: floatGlow 4s ease-in-out infinite; }
+    .animate-shimmer { background: linear-gradient(90deg, transparent, rgba(255,255,240,0.3), transparent); background-size: 200% 100%; animation: shimmer 3s infinite; }
+    .fade-up { animation: fadeSlideUp 0.8s ease-out forwards; }
+
+    /* ---------- NAVBAR ---------- */
+    .navbar {
+      background-color: var(--royal-deep);
+      padding: 0.9rem 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 3px solid var(--royal-gold);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      background: linear-gradient(145deg, #c9a05e, #b58b4a);
+      width: 55px;
+      height: 55px;
+      border-radius: 30% 70% 70% 30% / 30% 55% 45% 70%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #1e2a36;
+      box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+      border: 1px solid #eedbba;
+      transition: all 0.3s ease;
+    }
+    .logo-icon:hover { transform: rotate(8deg) scale(1.05); }
+    .logo-text h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--royal-cream);
+      line-height: 1.2;
+    }
+    .logo-text span {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 300;
+      color: #b9b1a3;
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-links a {
+      color: #e0d6c8;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      transition: 0.2s ease;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 4px;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--royal-gold);
+      transition: width 0.25s ease;
+    }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--royal-gold); }
+
+    .location-badge {
+      background: rgba(201, 160, 94, 0.18);
+      border: 1px solid #826f4e;
+      border-radius: 40px;
+      padding: 0.5rem 1.2rem;
+      font-size: 0.95rem;
+      color: #f5e1c1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .location-badge:hover {
+      background: rgba(201, 160, 94, 0.35);
+      border-color: #c9a05e;
+      transform: scale(1.02);
+    }
+    .location-badge i { color: var(--royal-gold); }
+
+    /* main container */
+    .container {
+      flex: 1;
+      max-width: 1300px;
+      margin: 2rem auto;
+      padding: 0 5%;
+      width: 100%;
+    }
+
+    /* section offsets */
+    #home, #gallery, #designer, #contact, #reviews, #services, #testimonials, #location {
+      scroll-margin-top: 90px;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(105deg, #ab6e11 0%, #88531e 100%);
+      border-radius: 42px 42px 42px 0;
+      padding: 3rem 3.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 20px 35px -10px rgba(30, 42, 54, 0.4);
+      border-left: 8px solid var(--royal-gold);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Hero Slide Background */
+    .hero-slides {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    .hero-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .hero-slide.active {
+      opacity: 1;
+    }
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(105deg, rgba(239, 239, 239, 0.92) 0%, rgba(251, 252, 251, 0.88) 100%);
+      z-index: 1;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(201,160,94,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: floatGlow 7s infinite;
+      z-index: 2;
+    }
+    .hero-text {
+      flex: 2 1 300px;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-text h2 {
+      font-size: 2.6rem;
+      font-weight: 600;
+      color: var(--royal-deep);
+      line-height: 1.2;
+    }
+    .hero-text h2 i {
+      color: #b48a47;
+      margin-right: 8px;
+      display: inline-block;
+      animation: gentlePulse 2s infinite;
+    }
+    .hero-desc {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 2rem 0;
+      color: #3f3a30;
+      max-width: 600px;
+    }
+    .cta-chip {
+      background: var(--royal-deep);
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 0 #0f1a22;
+      transition: 0.15s linear;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: white;
+    }
+    .cta-chip i { color: var(--royal-gold); }
+    .cta-chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 0 #0f1a22;
+    }
+    .hero-visual {
+      flex: 1 1 250px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 6rem;
+      color: #5e503f;
+      background: rgba(201, 160, 94, 0.1);
+      border-radius: 100px 20px 100px 20px;
+      padding: 1.5rem 0.5rem;
+      margin: 20px 0;
+      backdrop-filter: blur(5px);
+    }
+
+    /* gallery */
+    .gallery-section { margin: 4rem 0; }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 500;
+      color: var(--royal-deep);
+      border-left: 6px solid var(--royal-gold);
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .gallery-item {
+      background: white;
+      border-radius: 30px;
+      overflow: hidden;
+      box-shadow: 0 20px 30px -8px rgba(30,42,54,0.25);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: 1px solid #e3d5c5;
+      animation: fadeSlideUp 0.6s ease-out forwards;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+    .gallery-item:nth-child(2) { animation-delay: 0.15s; }
+    .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+    .gallery-item:nth-child(4) { animation-delay: 0.45s; }
+    .gallery-item:hover {
+      transform: scale(1.03) translateY(-10px);
+      box-shadow: 0 30px 40px -8px #1e2a36;
+    }
+    .gallery-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s;
+    }
+    .gallery-item:hover .gallery-img { transform: scale(1.1); }
+    .gallery-caption {
+      padding: 1.2rem;
+      background: white;
+      font-weight: 600;
+      color: #1e2a36;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .gallery-caption span {
+      background: var(--royal-gold);
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      color: #1e2a36;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* designer card */
+    .designer-card {
+      background: white;
+      border-radius: 40px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 25px 45px -20px #1e2a36;
+      border: 1px solid #dacfbf;
+      margin-bottom: 3rem;
+      transition: box-shadow 0.3s;
+    }
+    .designer-card:hover { box-shadow: 0 30px 50px -18px #b48a47; }
+    .epoxy-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    .color-palette { flex: 2 1 320px; }
+    .color-swatches {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0 1rem;
+    }
+    .swatch {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      box-shadow: 0 5px 0 #a7a08b;
+      cursor: pointer;
+      border: 3px solid transparent;
+      transition: 0.2s;
+    }
+    .swatch.active-swatch {
+      border: 4px solid var(--royal-gold);
+      transform: scale(1.05);
+      box-shadow: 0 10px 0 #7e735d;
+    }
+    .swatch:hover {
+      transform: scale(1.07) rotate(2deg);
+      box-shadow: 0 8px 0 #a79e8d;
+    }
+    .finish-options {
+      flex: 1 1 240px;
+      background: var(--royal-cream);
+      padding: 1.8rem;
+      border-radius: 30px;
+      transition: 0.2s;
+    }
+    .finish-options:hover { background: #efe3d6; }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      background: white;
+      padding: 0.8rem 1.2rem;
+      border-radius: 50px;
+      border: 1px solid #cdc3b4;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .radio-group label:hover {
+      background: #f9f2e9;
+      border-color: #c9a05e;
+      transform: translateX(4px);
+    }
+    .preview-area {
+      margin-top: 2rem;
+      padding: 1.8rem;
+      background: #eae1d4;
+      border-radius: 30px;
+      text-align: center;
+      font-weight: 500;
+      color: #1e2a36;
+      border: 2px dashed #b89f7b;
+      transition: background 0.3s;
+      background-image: url('assets/WhatsApp Image 2026-02-19 at 9.14.42 PM.jpeg'), radial-gradient(circle at 20% 30%, rgba(201,160,94,0.1) 0%, transparent 30%);
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+    }
+    #floorPreviewText {
+      font-size: 1.4rem;
+      background: #2f3e4e;
+      padding: 1rem 2rem;
+      border-radius: 90px;
+      color: white;
+      display: inline-block;
+      margin-top: 10px;
+      transition: 0.2s;
+      border: 2px solid transparent;
+    }
+    #floorPreviewText:hover {
+      border-color: #c9a05e;
+      transform: scale(1.02);
+    }
+
+    /* location spotlight */
+    .location-spotlight {
+      background: var(--royal-deep);
+      color: var(--royal-cream);
+      padding: 1.6rem 2.2rem;
+      border-radius: 90px;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+      margin: 1rem 0 2rem;
+      border: 2px solid #c9a05e;
+      font-size: 1.2rem;
+      transition: 0.3s;
+      animation: gentlePulse 3s infinite;
+      cursor: pointer;
+    }
+    .location-spotlight:hover {
+      background: #23323f;
+      transform: translateY(-3px);
+      border-color: #e9c48b;
+    }
+
+    /* contact section */
+    #contact {
+      background: var(--royal-cream);
+      border-radius: 50px;
+      padding: 2.5rem 2rem;
+      margin: 3rem 0;
+      border: 1px solid #dacbb8;
+    }
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    .contact-info {
+      flex: 1 1 280px;
+    }
+    .contact-info h3 {
+      font-size: 2rem;
+      color: var(--royal-deep);
+      margin-bottom: 1.5rem;
+    }
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.2rem 0;
+      font-size: 1.1rem;
+    }
+    .contact-detail i {
+      width: 40px;
+      height: 40px;
+      background: var(--royal-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e2a36;
+    }
+    .contact-map {
+      flex: 1 1 350px;
+      height: 220px;
+      background: #cdb89e;
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #3f3a30;
+      font-size: 1.2rem;
+      box-shadow: 0 10px 15px -5px rgba(0,0,0,0.2);
+      background-image: url('https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .contact-map span {
+      background: rgba(30,42,54,0.7);
+      color: white;
+      padding: 0.5rem 1.5rem;
+      border-radius: 60px;
+      backdrop-filter: blur(3px);
+    }
+
+    /* customer reviews section */
+    .reviews-section {
+      margin: 4rem 0;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .review-card {
+      background: white;
+      border-radius: 35px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 15px 25px -8px rgba(30,42,54,0.15);
+      border: 1px solid #e9dbcd;
+      transition: all 0.3s ease;
+      animation: fadeSlideUp 0.6s ease-out forwards;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+    .review-card:nth-child(2) { animation-delay: 0.15s; }
+    .review-card:nth-child(3) { animation-delay: 0.3s; }
+    .review-card:nth-child(4) { animation-delay: 0.45s; }
+    .review-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 22px 35px -10px var(--royal-gold);
+      border-color: var(--royal-gold);
+    }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .avatar {
+      width: 55px;
+      height: 55px;
+      background: var(--royal-deep);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--royal-gold);
+      font-size: 1.8rem;
+      font-weight: 600;
+      border: 2px solid var(--royal-gold);
+    }
+    .reviewer-info h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--royal-deep);
+    }
+    .reviewer-info p {
+      font-size: 0.9rem;
+      color: #7b6e5d;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .reviewer-info p i {
+      color: var(--royal-gold);
+      font-size: 0.8rem;
+    }
+    .stars {
+      color: #f5b342;
+      margin: 0.8rem 0;
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+    .stars i {
+      margin-right: 3px;
+    }
+    .review-text {
+      font-style: italic;
+      color: #3f3a30;
+      line-height: 1.6;
+      margin-top: 0.5rem;
+      border-left: 3px solid var(--royal-gold);
+      padding-left: 1rem;
+    }
+    .verified {
+      display: inline-block;
+      background: #e3f0e3;
+      color: #2b6e2b;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      margin-top: 0.8rem;
+      font-weight: 500;
+    }
+    .verified i {
+      font-size: 0.7rem;
+      margin-right: 4px;
+    }
+
+    /* ---------- NEW FOOTER (exactly from screenshot) ---------- */
+    .footer {
+      background: #161f29;
+      color: #e0d6c8;
+      padding: 3rem 5% 1.5rem;
+      border-top: 3px solid var(--royal-gold);
+      margin-top: 2rem;
+    }
+    .footer-main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .footer-col h3 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--royal-cream);
+      line-height: 1.2;
+    }
+    .footer-col h3 span {
+      display: block;
+      font-size: 1.8rem;
+    }
+    .footer-col .tagline {
+      margin-top: 0.8rem;
+      color: #b9b1a3;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .footer-col h4 {
+      color: var(--royal-gold);
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: 0.6rem;
+    }
+    .footer-col ul li a {
+      color: #d4c4af;
+      text-decoration: none;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .footer-col ul li a:hover {
+      color: var(--royal-gold);
+      padding-left: 5px;
+    }
+    .footer-col p {
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #d4c4af;
+    }
+    .footer-col p i {
+      color: var(--royal-gold);
+      width: 20px;
+    }
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2.5rem;
+      margin-top: 2rem;
+      border-top: 1px solid #3b4a58;
+      font-size: 0.9rem;
+      color: #8e8271;
+    }
+
+    @media (max-width: 700px) {
+      .hero-text h2 { font-size: 2rem; }
+      .location-spotlight { flex-wrap: wrap; border-radius: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo-area">
+      <div class="logo-icon animate-float">
+        <i class="fas fa-crown"></i>
+      </div>
+      <div class="logo-text">
+        <h1>Royal Resin Floors</h1>
+        <span>Epoxy · design · artisans</span>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#designer">Designer</a>
+      <a href="#contact">Contact</a>
+      <a href="#reviews">Reviews</a>
+      <div class="location-badge" onclick="alert('📍 Serving Jharsuguda since 2018')">
+        <i class="fas fa-map-pin"></i> Jharsuguda
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Home -->
+    <section id="home">
+      <div class="hero fade-up">
+        <!-- Hero Slide Background -->
+        <div class="hero-slides">
+          <div class="hero-slide active" style="background-image: url('assets/WhatsApp Image 2026-02-19 at 9.14.42 PM.jpeg');"></div>
+          <div class="hero-slide" style="background-image: url('assets/WhatsApp Image 2026-02-19 at 9.14.49 PM.jpeg');"></div>
+          <div class="hero-slide" style="background-image: url('assets/WhatsApp Image 2026-02-19 at 9.15.01 PM.jpeg');"></div>
+          <div class="hero-slide" style="background-image: url('assets/WhatsApp Image 2026-02-19 at 9.15.02 PM.jpeg');"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+          <h2><i class="fas fa-paint-roller"></i> Home epoxy <br>design studio</h2>
+          <p class="hero-desc">Luxury, durable floors tailored for your space.  
+          <span style="background:#fff1e0; padding:0.2rem 0.8rem; border-radius:40px; display:inline-block; margin-top:10px;"><i class="fas fa-location-dot" style="color:#c9a05e;"></i> now serving Jharsuguda homes</span></p>
+          <a href="#designer" class="cta-chip">
+            <i class="fas fa-ruler-combined"></i> design your floor
+          </a>
+        </div>
+        <div class="hero-visual animate-float">
+          <i class="fas fa-fill-drip"></i> <span style="font-size: 3rem;">✨</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery1 -->
+    <section id="gallery" class="gallery-section">
+      <h3 class="section-title">📸 Our 3D epoxy creations in Jharsuguda</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/WhatsApp Image 2026-02-19 at 9.14.49 PM.jpeg" alt="Metallic epoxy floor">
+          <div class="gallery-caption">metallic silver <span>⭐ 4.9</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/img1.webp" alt="Terrazzo epoxy">
+          <div class="gallery-caption">terrazzo chip <span>🔥 trend</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/2.jpg" alt="3D epoxy floor">
+          <div class="gallery-caption">3D deep ocean <span>⚡ premium</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/3.jpg" alt="flakes epoxy">
+          <div class="gallery-caption">flakes & quartz <span>✨ bestseller</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/4.jpg" alt="flakes epoxy">
+          <div class="gallery-caption">flakes & quartz <span>✨ bestseller</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!--Gallery --2-->
+    <section id="gallery" class="gallery-section">
+      <h3 class="section-title">📸 Our 3D epoxy creations in Jharsuguda</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/WhatsApp Image 2026-02-19 at 9.14.42 PM.jpeg" alt="Metallic epoxy floor">
+          <div class="gallery-caption">metallic silver <span>⭐ 4.9</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/img5.jpg" alt="Terrazzo epoxy">
+          <div class="gallery-caption">terrazzo chip <span>🔥 trend</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/img6.jpg" alt="3D epoxy floor">
+          <div class="gallery-caption">3D deep ocean <span>⚡ premium</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/WhatsApp Image 2026-02-19 at 9.14.49 PM.jpeg" alt="flakes epoxy">
+          <div class="gallery-caption">flakes & quartz <span>✨ bestseller</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!--Gallery --3-->
+     <section id="gallery" class="gallery-section">
+      <h3 class="section-title">📸 Our epoxy creations in Rourkela</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/WhatsApp Image 2026-02-19 at 9.14.42 PM.jpeg" alt="Metallic epoxy floor">
+          <div class="gallery-caption">metallic silver <span>⭐ 4.9</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Terrazzo epoxy">
+          <div class="gallery-caption">terrazzo chip <span>🔥 trend</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="3D epoxy floor">
+          <div class="gallery-caption">3D deep ocean <span>⚡ premium</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="flakes epoxy">
+          <div class="gallery-caption">flakes & quartz <span>✨ bestseller</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!--Gallery --4-->
+     <section id="gallery" class="gallery-section">
+      <h3 class="section-title">📸 Our epoxy creations in Bhubaneswar</h3>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img class="gallery-img" src="assets/WhatsApp Image 2026-02-19 at 9.14.42 PM.jpeg" alt="Metallic epoxy floor">
+          <div class="gallery-caption">metallic silver <span>⭐ 4.9</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="https://images.unsplash.com/photo-1581783898377-1c85bf937427?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Terrazzo epoxy">
+          <div class="gallery-caption">terrazzo chip <span>🔥 trend</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="3D epoxy floor">
+          <div class="gallery-caption">3D deep ocean <span>⚡ premium</span></div>
+        </div>
+        <div class="gallery-item">
+          <img class="gallery-img" src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="flakes epoxy">
+          <div class="gallery-caption">flakes & quartz <span>✨ bestseller</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Designer -->
+    <section id="designer">
+      <div class="designer-card">
+        <h3 class="section-title" style="margin-bottom:1rem;">Epoxy floor designer — pick your style</h3>
+        <div class="epoxy-tools">
+          <div class="color-palette">
+            <p style="font-weight:600; margin-bottom:10px;">🎨 base colour</p>
+            <div class="color-swatches" id="colorSwatches"></div>
+            <p style="margin-top: 0.8rem;">selected colour: <span id="selectedColorName">slate grey</span></p>
+          </div>
+          <div class="finish-options">
+            <h3>finish effect</h3>
+            <div class="radio-group" id="finishGroup">
+              <label><input type="radio" name="finish" value="metallic gloss" checked> <i class="fa-regular fa-star"></i> metallic gloss</label>
+              <label><input type="radio" name="finish" value="sand texture"> <i class="fa-regular fa-gem"></i> sand texture</label>
+              <label><input type="radio" name="finish" value="high-build matte"> <i class="fa-regular fa-moon"></i> high-build matte</label>
+            </div>
+          </div>
+        </div>
+        <div class="preview-area">
+          <i class="fas fa-eye"></i> your resin floor preview <span style="display: block; font-size:1rem; color:#4d4436;">(jharsuguda style)</span>
+          <div id="floorPreviewText">
+            <span id="previewColor">Slate grey</span> · <span id="previewFinish">metallic gloss</span>
+          </div>
+          <div style="margin-top: 0.8rem;"><i class="fas fa-map-marker-alt" style="color:#b48a47;"></i> ready for your Jharsuguda project</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Location spotlight -->
+    <div class="location-spotlight" onclick="alert('📞 Book a free site visit in Jharsuguda!')">
+      <i class="fas fa-map-marked-alt"></i>
+      <span><strong>Royal Resin Floors — Jharsuguda</strong> : residential & commercial epoxy experts. </span>
+      <span style="background:#25323e; padding:0.2rem 1.2rem; border-radius:40px;"><i class="fa-regular fa-compass"></i> Odisha 768202</span>
+    </div>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Let’s talk epoxy</h3>
+          <div class="contact-detail"><i class="fas fa-phone-alt"></i> +91 7788067306</div>
+          <div class="contact-detail"><i class="fas fa-envelope"></i> barikdiptiranjan04@gmail.com</div>
+          <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> Mandalia Road, Jharsuguda, Odisha</div>
+          <div style="margin-top: 2rem;">
+            <a href="#" style="background: var(--royal-gold); color: #1e2a36; padding: 0.8rem 2rem; border-radius: 40px; text-decoration: none; font-weight: 600; display: inline-block;">📅 Free consultation</a>
+          </div>
+        </div>
+        <div class="contact-map">
+          <span>📍 Jharsuguda</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section id="reviews" class="reviews-section">
+      <h3 class="section-title">💬 Customer reviews</h3>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="reviewer"><div class="avatar">P</div><div class="reviewer-info"><h4>Priya Sharma</h4><p><i class="fas fa-map-pin"></i> Jharsuguda</p></div></div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="review-text">"We got the metallic epoxy for our living room. It looks absolutely stunning! The team was professional and finished ahead of schedule."</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> Verified purchase</div>
+        </div>
+        <div class="review-card">
+          <div class="reviewer"><div class="avatar">R</div><div class="reviewer-info"><h4>Rohan Mehta</h4><p><i class="fas fa-map-pin"></i> Jharsuguda</p></div></div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+          <div class="review-text">"High-quality work and great attention to detail. The 3D floor in our office lobby gets compliments every day. Highly recommend Royal Resin!"</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> Verified purchase</div>
+        </div>
+        <div class="review-card">
+          <div class="reviewer"><div class="avatar">S</div><div class="reviewer-info"><h4>Sunita Patra</h4><p><i class="fas fa-map-pin"></i> Jharsuguda</p></div></div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="review-text">"We chose the sand texture finish for our kitchen. It's durable and easy to clean. The team guided us perfectly. Thank you!"</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> Verified purchase</div>
+        </div>
+        <div class="review-card">
+          <div class="reviewer"><div class="avatar">A</div><div class="reviewer-info"><h4>Arjun Singh</h4><p><i class="fas fa-map-pin"></i> Jharsuguda</p></div></div>
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <div class="review-text">"From consultation to installation, everything was smooth. The floor looks like a piece of art. Worth every rupee!"</div>
+          <div class="verified"><i class="fas fa-check-circle"></i> Verified purchase</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- NEW FOOTER (replaced with screenshot content) -->
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="footer-col">
+        <h3>Royal Resin <span>Floors</span></h3>
+        <p class="tagline">Luxury epoxy flooring for homes.<br>Design, durability, and finish — rooted in Jharuguda.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#designer">Services</a></li>        <!-- mapped Services to designer -->
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#reviews">Testimonials</a></li>    <!-- mapped Testimonials to reviews -->
+          <li><a href="#contact">Location</a></li>         <!-- mapped Location to contact section -->
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Jharuguda office</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Mandalia Road, Jharsuguda, Odisha</p>
+        <p><i class="fas fa-phone-alt"></i> +91 7788067306
+</p>
+        <p><i class="fas fa-envelope"></i> jharuguda@royalresin.in</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Royal Resin Floors — All rights reserved. | Serving Odisha with pride.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // Hero Slideshow - Auto rotate every 3 seconds
+      const slides = document.querySelectorAll('.hero-slide');
+      let currentSlide = 0;
+      function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+      }
+      setInterval(nextSlide, 3000);
+
+      // Color palette functionality
+      const colors = [
+        { name: 'slate grey', code: '#4a5b6e' },
+        { name: 'desert sand', code: '#dbbca1' },
+        { name: 'graphite', code: '#2f3a44' },
+        { name: 'terracotta', code: '#b85c4b' },
+        { name: 'ivory', code: '#f2e5d5' }
+      ];
+
+      const swatchContainer = document.getElementById('colorSwatches');
+      const selectedColorSpan = document.getElementById('selectedColorName');
+      const previewColorSpan = document.getElementById('previewColor');
+      const previewFinishSpan = document.getElementById('previewFinish');
+      const finishRadios = document.querySelectorAll('input[name="finish"]');
+
+      function updatePreview() {
+        let activeSwatch = document.querySelector('.swatch.active-swatch');
+        let colorName = activeSwatch ? activeSwatch.getAttribute('data-color-name') : 'slate grey';
+        let selectedFinish = document.querySelector('input[name="finish"]:checked');
+        let finishValue = selectedFinish ? selectedFinish.value : 'metallic gloss';
+
+        selectedColorSpan.textContent = colorName;
+        previewColorSpan.textContent = colorName.charAt(0).toUpperCase() + colorName.slice(1);
+        previewFinishSpan.textContent = finishValue;
+      }
+
+      colors.forEach((c, idx) => {
+        const wrapper = document.createElement('div');
+        wrapper.style.display = 'inline-block';
+        wrapper.style.marginRight = '10px';
+
+        const swatchDiv = document.createElement('div');
+        swatchDiv.className = `swatch ${idx === 0 ? 'active-swatch' : ''}`;
+        swatchDiv.style.backgroundColor = c.code;
+        swatchDiv.setAttribute('data-color-name', c.name);
+        swatchDiv.setAttribute('title', c.name);
+
+        const label = document.createElement('span');
+        label.className = 'swatch-label';
+        label.textContent = c.name;
+
+        wrapper.appendChild(swatchDiv);
+        wrapper.appendChild(label);
+        swatchContainer.appendChild(wrapper);
+
+        swatchDiv.addEventListener('click', function() {
+          document.querySelectorAll('.swatch').forEach(el => el.classList.remove('active-swatch'));
+          this.classList.add('active-swatch');
+          updatePreview();
+        });
+      });
+
+      updatePreview();
+      finishRadios.forEach(radio => radio.addEventListener('change', updatePreview));
+    })();
+  </script>
+  <style>
+    .gallery-img { background: #cdb89e; }
+  </style>
+</body>
+</html>
